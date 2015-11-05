@@ -56,18 +56,24 @@ long lastDebounceTimeA = 0;
 long lastDebounceTimeR = 0;
 long debounceDelay = 50;
 
+boolean winState = false;
+boolean loseState = false;
+
 int dataIn = 6;
 int load = 7;
 int clock = 13;
 boolean theMap[8][8];
 int treasureRate = 625; // Out of 10,000
+
+int loot = 0;
+const int lootGoal = 1000;
+
 int playerX = 4;    //Player start X position
 int playerY = 4;    //Player start Y position
 int accelRate = 0;
 int monsterLootValue = 0;
 const long interval = 250;
 unsigned long previousMillis = 0;
-int ledState = LOW;
 int maxInUse = 1;    //change this variable to set how many MAX7219's you'll use
 int e = 0;           // just a variable
 
@@ -580,6 +586,14 @@ void movePlayer(){
   if(rightState == 1){
     playerX +=1;
   }
+}
+
+void win(){ //if loot == goalLoot
+  winState = true;
+}
+
+void lose(){ //if playerHealth <= 0
+  loseState = true;
 }
 
 

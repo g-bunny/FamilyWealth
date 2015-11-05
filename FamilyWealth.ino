@@ -694,4 +694,3 @@ void putByte(byte data) {
     --i;                         // move to lesser bit
   }
 }
-
